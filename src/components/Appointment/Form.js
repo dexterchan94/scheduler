@@ -19,6 +19,7 @@ const cancel = () => {
   props.onCancel();
 };
 
+
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -41,7 +42,7 @@ const cancel = () => {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button onClick={cancel} danger>Cancel</Button>
-          <Button onClick={props.onSave} confirm>Save</Button>
+          <Button onClick={() => props.onSave(name, interviewer)} confirm>Save</Button>
         </section>
       </section>
     </main>
