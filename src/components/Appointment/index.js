@@ -28,7 +28,7 @@ const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY)
         />)}
       {mode === CREATE && (
         <Form
-          interviewers={[]}
+          interviewers={props.interviewers}
           // onSave={() => transition(SAVING)}
           onCancel={() => back()}
         />)}
