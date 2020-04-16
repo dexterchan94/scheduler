@@ -37,7 +37,6 @@ const Appointment = function(props) {
         transition(SHOW);
       })
       .catch((err) => {
-        console.log("ERROR LOL");
         transition(ERROR_SAVE, true);
       });
   }
