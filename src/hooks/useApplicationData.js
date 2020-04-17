@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useVisualMode(initial) {
+export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -22,33 +22,37 @@ export default function useVisualMode(initial) {
 
   const setDay = day => setState({ ...state, day });
 
+  
   function bookInterview(id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
+    // Update Appointments
+    const appointment = {...state.appointments[id], interview: { ...interview }};
+    const appointments = {...state.appointments, [id]: appointment};
+
+    // Update number of spots
+    const currentDay = state.days.filter(day => day.appointments.includes(id))[0];
+    const newDay = {...currentDay, spots: currentDay.spots - 1};
+    const newDays = state.days.map(day => (day.id === newDay.id ? newDay : day));
+    
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        setState({...state, appointments});
+        setState({...state, appointments, days: newDays});
       });
   }
 
+
   function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
+    // Update Appointments
+    const appointment = {...state.appointments[id], interview: null};
+    const appointments = {...state.appointments,[id]: appointment};
+
+    // Update number of spots
+    const currentDay = state.days.filter(day => day.appointments.includes(id))[0];
+    const newDay = {...currentDay,spots: currentDay.spots + 1};
+    const newDays = state.days.map(day => (day.id === newDay.id ? newDay : day));
+
     return axios.delete(`/api/appointments/${id}`, appointment)
       .then(() => {
-        setState({...state, appointments});
+        setState({...state, appointments, days: newDays});
       });
   }
 
