@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
+
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_INTERVIEW = "SET_INTERVIEW";
@@ -43,7 +44,27 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: {}
   });
-  
+
+  // Websocket logic
+  useEffect(() => {
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+
+    webSocket.onopen = function (event) {
+      const message = "Connection Established!"
+      webSocket.send(JSON.stringify(message)); 
+    };
+
+    webSocket.onmessage = function (event) {
+      const response = JSON.parse(event.data);
+      dispatch({type: response.type, value: {id: response.id, interview: response.interview }})
+    }
+
+    const cleanup = () => {
+      webSocket.close();
+    };
+    return cleanup;
+  }, []);
+
   const setDay = day => dispatch({type: SET_DAY, value: day});
 
   useEffect(() => {
