@@ -16,8 +16,8 @@ export default function useApplicationData() {
     const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
 
     webSocket.onopen = function (event) {
-      const message = "Connection Established!"
-      webSocket.send(JSON.stringify(message)); 
+      // const message = "Connection Established!"
+      // webSocket.send(JSON.stringify(message)); 
     };
 
     webSocket.onmessage = function (event) {
