@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText} from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getByTestId, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText} from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -67,6 +67,41 @@ describe("Application", () => {
     // 8. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining".
     const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
+
+  });
+
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
+    // 1. Render the Application.
+    const { container, debug } = render(<Application />);
+  
+    // 2. Wait until the text "Archie Cohen" is displayed.
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    
+    // 3. Click the "Edit" button on the first booked appointment.
+    const appointment = getAllByTestId(container, "appointment").find(appointment => queryByText(appointment, "Archie Cohen"));
+    fireEvent.click(queryByAltText(appointment, "Edit"));
+
+    // 4. Check that the element with the text "Save" is displayed.    
+    expect(getByText(appointment, "Save")).toBeInTheDocument();
+
+    // 5. Change the input value to "Dexter Chan"
+    fireEvent.change(getByTestId(appointment, "student-name-input"), {
+      target: { value: "Dexter Chan" }
+    });
+
+    // 6. Click the "Save" button.
+    fireEvent.click(queryByText(appointment, "Save"));
+
+    // 7. Check that the element with the text "Saving" is displayed.
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+
+    // 8. Check that the element with the text "Dexter Chan" is displayed.
+    await waitForElement(() => getByAltText(appointment, "Edit"));
+    expect(getByText(appointment, "Dexter Chan")).toBeInTheDocument();
+
+    // 9. Check that the DayListItem with the text "Monday" also has the text "1 spot remaining".
+    const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
 
   });
 
