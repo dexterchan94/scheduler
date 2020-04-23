@@ -18,12 +18,14 @@ This was a student project intended to allow students to develop their skills us
 
 4. In another terminal, run ```npm start``` in the scheduler directory to start the webpack development server.
 
-## Screenshots
-
+## Demo
+### Booking an Appointment
 !["Booking an Appointment"](https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif)
-<img src="https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif" alt="Booking an Appointment" width="600">
-<img src="https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif" alt="Booking an Appointment" width="800">
-<img src="https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif" alt="Booking an Appointment" width="950">
+### Editing an Appointment
+!["Editing an Appointment"](https://media.giphy.com/media/MCok9nzEJYdnoL5x8c/giphy.gif)
+### Cancelling an Appointment
+!["Cancelling an Appointment"](https://media.giphy.com/media/H4cTApjIqtUIGKAM94/giphy.gif)
+
 
 
 ## Running Jest Test Framework
