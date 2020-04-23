@@ -26,6 +26,8 @@ const Appointment = function(props) {
 
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
+  // Runs when user clicks save button on the booking form
+  // Transitions to STATUS with a loading spinner, makes an axios request, and transitions to SHOW when resolved
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -41,6 +43,8 @@ const Appointment = function(props) {
       });
   }
 
+  // Runs when user clicks the delete button followed by 'confirm' on the SHOW view
+  // Transitions to STATUS with a loading spinner, makes an axios request, and transitions to EMPTY when resolved
   function cancelAppointment() {
     transition(DELETING, true);
     props.cancelInterview(props.id)
@@ -52,6 +56,7 @@ const Appointment = function(props) {
       });
   }
 
+  // Updates views for clients connected through websockets
   useEffect(() => {
     if (mode === EMPTY && props.interview) {
       transition(SHOW);

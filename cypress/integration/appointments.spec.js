@@ -1,9 +1,9 @@
 describe("Appointments", () => {
 
   beforeEach(() => {
-    cy.request("GET", "/api/debug/reset");
+    cy.request("GET", "/api/debug/reset"); // Reset the data before each test
     cy.visit('/');
-    cy.contains("Monday");
+    cy.contains("Monday"); // Wait for the data to load before proceeding
   });
 
   it("should book an interview", () => {
@@ -45,4 +45,5 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Archie Cohen")
       .should("not.exist");
   });
+  
 });

@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react'
-
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import "index.scss";
-
 
 import Button from "components/Button";
 import DayList from "components/DayList";
@@ -114,9 +112,6 @@ storiesOf("InterviewerListItem", module)
     />
   ));
 
-
-
-
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
   { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -142,8 +137,6 @@ storiesOf("InterviewerList", module)
       onChange={action("setInterviewer")}
     />
   ));
-
-
 
 storiesOf("Appointment", module)
   .addParameters({
@@ -203,5 +196,4 @@ storiesOf("Appointment", module)
       />
       <Appointment id="last" time="1pm" />
     </Fragment>
-  ))
-  ;
+  ));

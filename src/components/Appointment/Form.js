@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "./styles.scss";
-
 import Button from "../Button";
 import InterviewerList from "../InterviewerList";
 
@@ -10,6 +9,7 @@ const Form = function(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  // Triggers when user clicks cancel button
   const reset = () => {
     setName("");
     setInterviewer(null);
@@ -20,6 +20,7 @@ const Form = function(props) {
     props.onCancel();
   };
 
+  // Prevent form submission and show error text if form is incomplete
   function validate() {
     if (!interviewer) {
       setError("Please select an interviewer");

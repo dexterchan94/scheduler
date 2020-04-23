@@ -9,7 +9,7 @@ export default function reducer(state, action) {
     case SET_APPLICATION_DATA:
       return {...state, days: action.value.days, appointments: action.value.appointments, interviewers: action.value.interviewers};
     case SET_INTERVIEW: {
-      // Update appointments
+      // Create updated appointments object
       const appointment = {...state.appointments[action.value.id], interview: action.value.interview};
       const appointments = {...state.appointments,[action.value.id]: appointment};
 

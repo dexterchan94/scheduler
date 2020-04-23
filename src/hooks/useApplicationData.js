@@ -15,11 +15,7 @@ export default function useApplicationData() {
   useEffect(() => {
     const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
 
-    webSocket.onopen = function (event) {
-      // const message = "Connection Established!"
-      // webSocket.send(JSON.stringify(message)); 
-    };
-
+    // Update state when a message has been received from the server
     webSocket.onmessage = function (event) {
       const response = JSON.parse(event.data);
       dispatch({type: response.type, value: {id: response.id, interview: response.interview }})
@@ -31,8 +27,10 @@ export default function useApplicationData() {
     return cleanup;
   }, []);
 
+  // Updates selected day state
   const setDay = day => dispatch({type: SET_DAY, value: day});
 
+  // On initial page load fetches data from database and updates state
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -44,6 +42,7 @@ export default function useApplicationData() {
     })
   }, []);
 
+  // Makes an axios put request to the database and updates state when the promise resolves
   function bookInterview(id, interview) {
     const appointment = {...state.appointments[id], interview: { ...interview }};
     return axios.put(`/api/appointments/${id}`, appointment)
@@ -52,6 +51,7 @@ export default function useApplicationData() {
       });
   }
 
+  // Makes an axios delete request to the database and updates state when the promise resolves
   function cancelInterview(id) {
     const appointment = {...state.appointments[id], interview: null};
     return axios.delete(`/api/appointments/${id}`, appointment)

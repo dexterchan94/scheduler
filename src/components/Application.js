@@ -1,16 +1,13 @@
 import React from "react";
-
 import "components/Application.scss";
-
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
-
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
-
 import useApplicationData from "hooks/useApplicationData";
 
 
 export default function Application(props) {
+  // Import custom hook that manages state
   const {
     state,
     setDay,
@@ -18,8 +15,8 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
   
+  // Filter state and grab necessary data for rendering appointments for the selected day
   const interviewers = getInterviewersForDay(state, state.day);
-
   const appointments = getAppointmentsForDay(state, state.day).map(appointment => {
     return (
       <Appointment
