@@ -21,6 +21,8 @@ This was a student project intended to allow students to develop their skills us
 ## Screenshots
 
 !["Booking an Appointment"](https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif)
+<img src="https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif" alt="Booking an Appointment" width="800">
+
 
 ## Running Jest Test Framework
 Jest was used to facilitate unit testing and integration testing.
