@@ -22,9 +22,9 @@ This was a student project intended to allow students to develop their skills us
 ### Booking an Appointment
 !["Booking an Appointment"](https://github.com/dexterchan94/scheduler/blob/master/docs/book-appointment.gif?raw=true)
 ### Editing an Appointment
-!["Editing an Appointment"](https://media.giphy.com/media/MCok9nzEJYdnoL5x8c/giphy.gif)
+!["Editing an Appointment"](https://github.com/dexterchan94/scheduler/blob/master/docs/edit-appointment.gif?raw=true)
 ### Cancelling an Appointment
-!["Cancelling an Appointment"](https://media.giphy.com/media/H4cTApjIqtUIGKAM94/giphy.gif)
+!["Cancelling an Appointment"](https://github.com/dexterchan94/scheduler/blob/master/docs/cancel-appointment.gif?raw=true)
 
 
 
