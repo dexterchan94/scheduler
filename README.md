@@ -20,7 +20,7 @@ This was a student project intended to allow students to develop their skills us
 
 ## Demo
 ### Booking an Appointment
-!["Booking an Appointment"](https://media.giphy.com/media/kGW5t3sDYNE7Jhw0hB/giphy.gif)
+!["Booking an Appointment"](https://github.com/dexterchan94/scheduler/blob/master/docs/book-appointment.gif?raw=true)
 ### Editing an Appointment
 !["Editing an Appointment"](https://media.giphy.com/media/MCok9nzEJYdnoL5x8c/giphy.gif)
 ### Cancelling an Appointment
