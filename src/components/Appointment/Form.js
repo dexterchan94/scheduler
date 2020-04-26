@@ -22,12 +22,12 @@ const Form = function(props) {
 
   // Prevent form submission and show error text if form is incomplete
   function validate() {
-    if (!interviewer) {
-      setError("Please select an interviewer");
-      return;
-    }
     if (name === "") {
       setError("Student name cannot be blank");
+      return;
+    }
+    if (!interviewer) {
+      setError("Please select an interviewer");
       return;
     }
   
